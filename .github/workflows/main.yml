@@ -9,7 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
@@ -19,7 +21,6 @@ jobs:
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        SONAR_ORGANIZATION: ${{ secrets.SONAR_ORGANIZATION }}
     - name: Install dependencies
       run: npm install
     - name: Run tests
